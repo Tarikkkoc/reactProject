@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './navbar';
+import Home from './home';
 
 function App() {
+  const title = "Blog içerisine hoş geldiniz"; // dinamik değer oluşturuldu
+  const ask = 1903;
+  const person = {name:"Tarık",surname:"Koç", age:22, job:"Engineer"};
+  const link = "http://www.google.com";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Home/>
+      <div className="content">
+
+      </div>
     </div>
   );
 }
