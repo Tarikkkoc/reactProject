@@ -1,20 +1,35 @@
 import './App.css';
 import Navbar from './navbar';
 import Home from './home';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Create from './Create';
+import BlogDetail from './BlogDetail';
+import NotFound from './NotFound';
 
 function App() {
-  const title = "Blog içerisine hoş geldiniz"; // dinamik değer oluşturuldu
-  const ask = 1903;
-  const person = {name:"Tarık",surname:"Koç", age:22, job:"Engineer"};
-  const link = "http://www.google.com";
   return (
-    <div className="App">
-      <Navbar/>
-      <Home/>
-      <div className="content">
+    <Router>
+      <div className="App">
+        <Navbar/>
 
+      <div className="content">
+      <Switch>
+        <Route exact path="/"> {/* / ile başlıyor. 18.satır da / ile başlıyor. bu nedenle tarayıcı ilk gördüğü path'i alır. exact path tam eşleşeni alır. */}
+          <Home/>
+        </Route>
+        <Route path="/create"> {/* dosya yolu eklendi. webde arama çubuğuna 3000/ olduğunda çalışır */}
+          <Create/>
+        </Route>
+        <Route path="/blogs/:kimlik"> {/* /blogs/:kimlik kimlik kısmı route parameters olup  adres çubuğunda ne girilirse belirtilen yere gönderir. /blogs/:1 ile /blogs/:12341324 aynı sayfaya gönderir. */}
+          <BlogDetail/>
+        </Route>
+        <Route path="*"> {/* * sayfayı kilitli gösterir. olmayan bir sayfa varsa burayı açar. */}
+          <NotFound/>
+        </Route>
+      </Switch>
       </div>
     </div>
+    </Router>
   );
 }
 
